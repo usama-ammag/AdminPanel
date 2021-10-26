@@ -58,7 +58,7 @@ class RecentTransaction extends React.Component {
       this.props.setIsLoaderActive(true);
       var data = await SendHttpRequest(
         BaseUrl + "v1/Pool/UpdatePoolStatus",
-        { ProjectId: Id, Status: Status },
+        { ProjectId: Id, adminStatus: Status },
         "POST"
       );
       if (data.isSuccess == true) {

@@ -161,9 +161,42 @@ class RecentTransaction extends React.Component {
   HandleOpen(Id) {
     let p = this.state.tableData.find((x) => x.id == Id);
     // if (!p) {
+
+    const createdAtDate = new Date(p?.createdAt);
+    const createdAtYear = new Intl.DateTimeFormat("en", {
+      year: "numeric",
+    }).format(createdAtDate);
+    const createdAtMonth = new Intl.DateTimeFormat("en", {
+      month: "numeric",
+    }).format(createdAtDate);
+    const createdAtDay = new Intl.DateTimeFormat("en", {
+      day: "2-digit",
+    }).format(createdAtDate);
+    const createdAtConvertedDate = `${createdAtYear}-${createdAtMonth}-${createdAtDay}`;
+
+    //expected project date
+    const expectedDate = new Date(p?.createdAt);
+    const expectedYear = new Intl.DateTimeFormat("en", {
+      year: "numeric",
+    }).format(expectedDate);
+    const expectedMonth = new Intl.DateTimeFormat("en", {
+      month: "numeric",
+    }).format(expectedDate);
+    const expectedDay = new Intl.DateTimeFormat("en", {
+      day: "2-digit",
+    }).format(expectedDate);
+    const expectedProjectDate = `${expectedYear}-${expectedMonth}-${expectedDay}`;
+
+    // console.log(liveProjectDate);
+    // setLiveDate(liveProjectDate)
+    const poolModified = {
+      ...p,
+      createdAt: createdAtConvertedDate,
+      expectedLaunchDate: expectedProjectDate,
+    };
     //   return;
     // }
-    this.setState({ SelectedProject: p, ImageModal: true });
+    this.setState({ SelectedProject: poolModified, ImageModal: true });
   }
   render() {
     return (

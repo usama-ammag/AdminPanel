@@ -62,6 +62,11 @@ class RecentTransaction extends React.Component {
         "POST"
       );
       if (data.isSuccess == true) {
+        swal({
+          icon: "success",
+          title: data.message,
+        });
+
         this.setState({
           tableData: [
             ...this.state.tableData.filter((x) => x.id != Id),
@@ -93,6 +98,7 @@ class RecentTransaction extends React.Component {
         p.projectName +
         ") will be listed to users",
       icon: "warning",
+      closeOnClickOutside: false,
       buttons: {
         dismiss: {
           text: "Dismiss",
@@ -172,6 +178,17 @@ class RecentTransaction extends React.Component {
                 scrollable
                 // onHide={handleClose}
               >
+                <Modal.Header className="justify-content-center">
+                  <Button
+                    variant="warning"
+                    onClick={() => {
+                      this.setState({ ImageModal: false });
+                    }}
+                  >
+                    Close
+                  </Button>
+                  {/* <Button variant="primary">Understood</Button> */}
+                </Modal.Header>
                 <Modal.Body>
                   <div
                     className="container "
@@ -549,17 +566,6 @@ class RecentTransaction extends React.Component {
                     <hr className="mt-2 mb-2" />
                   </div>
                 </Modal.Body>
-                <Modal.Footer>
-                  <Button
-                    variant="warning"
-                    onClick={() => {
-                      this.setState({ ImageModal: false });
-                    }}
-                  >
-                    Close
-                  </Button>
-                  {/* <Button variant="primary">Understood</Button> */}
-                </Modal.Footer>
               </Modal>
               )
               {this.state.tableData.length > 0 ? (

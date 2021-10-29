@@ -36,6 +36,7 @@ const mapStateToProps = (state) => {
     Defaults: state.Defaults,
   };
 };
+
 const mapDispatchToProps = (dispatch) => {
   return {
     addWallets: bindActionCreators(addWallets, dispatch),

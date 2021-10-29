@@ -23,6 +23,7 @@ import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import Loader from "./component/shared/loader";
 import ProjectManagement from "./component/ProjectManagement";
+import UpdatePool from "./component/UpdatePool";
 // import KYC from "./component/KYC";
 // import Invoice from "./component/Invoice";
 // import PayWalaScreen from "./component/PayWalaScreen";
@@ -59,6 +60,12 @@ const Pages = () => {
                   path="/ProjectManagement"
                   component={ProjectManagement}
                 ></PrivateRoute>{" "}
+                 <PrivateRoute
+                  exact
+                  path="/editpool/:id"
+                  component={UpdatePool}
+                ></PrivateRoute>{" "}
+
               </SharedLayout>{" "}
             </Fragment>{" "}
           </Switch>{" "}

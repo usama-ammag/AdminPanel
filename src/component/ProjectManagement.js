@@ -18,6 +18,7 @@ import { setIsLoaderActive } from "../actions/index";
 // import {Loader} from './Loader'
 import Loader from "../component/shared/loader";
 import { getToken } from "../Utils/Utils";
+import { Link } from "react-router-dom";
 const mapStateToProps = (state) => {
   return {};
 };
@@ -626,14 +627,16 @@ class RecentTransaction extends React.Component {
                           .sort((a, b) => b.id - a.id)
                           .map((value, index) => {
                             return (
-                              <tr key={index}>
+                              <tr key={index} >
+                                {console.log(value)}
                                 <td>
+                                  <p>{console.log(value)}</p>
                                   <img
                                     style={{ width: "30px" }}
                                     src={BaseUrlGet + value.imageFile}
                                   />
                                 </td>
-                                <td>{value.projectName}</td>
+                                <td style={{cursor:"pointer"}}> <Link to={`editpool/${value.id}`}>{value.projectName}</Link></td>
                                 <td>{value.blockChainName}</td>
                                 <td>{value.tokenRate}</td>
                                 <td>{value.supplyAmount}</td>
